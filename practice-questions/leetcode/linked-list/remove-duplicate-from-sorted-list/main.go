@@ -11,10 +11,16 @@ func deleteDuplicates(head *ListNode) *ListNode {
   if head == nil {
     return head
   }
-
-  sentinel := &ListNode{0, head}
+	
+  sentinel := &ListNode{Val: 0, Next: head}
   curr, prev := head, sentinel
+	
   for curr != nil {
+		fmt.Println("Begining Curr: ",linkedListToSlice(curr))
+		fmt.Println("Begining Prev: ",linkedListToSlice(prev))
+		fmt.Println("=======================================")
+
+		fmt.Printf("prev.Next: %d, curr: %d\n", prev.Next.Val, curr.Val)
     if curr.Next != nil && curr.Val == curr.Next.Val {
       curr = curr.Next
       continue
@@ -23,8 +29,14 @@ func deleteDuplicates(head *ListNode) *ListNode {
     if prev.Next != curr {
       prev.Next = curr.Next
     } else {
-      prev = prev.Next
+			fmt.Printf("Prev: %d, Prev.Nex: %d\n", prev.Val, prev.Next.Val)
+			prev = prev.Next
+			// fmt.Println("Else prev: ", linkedListToSlice(prev))
     }
+		fmt.Println("End Curr: ",linkedListToSlice(curr))
+		fmt.Println("End Prev: ",linkedListToSlice(prev))
+		fmt.Println("=======================================")
+
     curr = curr.Next
   }
 

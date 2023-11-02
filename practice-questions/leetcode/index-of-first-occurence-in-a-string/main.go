@@ -13,13 +13,15 @@ import (
 // Explanation: "sad" occurs at index 0 and 6.
 // The first occurrence is at index 0, so we return 0.
 
-func strStr(haystack string, needle string) int {
+func StrStr(haystack string, needle string) int {
+	if needle == "" || haystack == "" {
+		return -1
+	}
 	return strings.Index(haystack, needle)
 }
 
 func main() {
-
 	str1 := "sadbutsad"
 	str2 := "sad"
-	fmt.Println(strStr(str1, str2))
+	fmt.Println(StrStr(str1, str2))
 }
